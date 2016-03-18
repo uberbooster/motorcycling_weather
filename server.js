@@ -7,6 +7,7 @@ var express = require('express'),
     Weather = require('./models/weather.model.js');
     WeatherCtrl = require('./controllers/weather.controller.js');
     //Schema = mongoose.Schema,
+mongoose.connect('mongodb://uberbooster:5vgsdpFn@i!!rnAI7MHUGCI7st@ds023468.mlab.com:23468/motorcyclingweather');
 
 var port = process.env.PORT || 9000;
 
@@ -18,7 +19,7 @@ server.use(bodyParser.urlencoded({extended: true})); // for parsing application/
 server.get('/', function(req, res){
   res.sendFile('/public/html/index.html', {root:__dirname});
 });
-    
+
 server.listen(port, function(){
   console.log('Now listening on port ' + port);
 });

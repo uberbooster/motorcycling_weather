@@ -14,3 +14,14 @@ Results:
 4)	Show the distance I will travel on my trip
 5)	Show the time it will take to travel from my start location to my end location (including time for breaks – phase II)
 6)	Show the weather at my final destination based on the total time it will take to travel
+
+
+Before we work on the project we need to...
+git add .
+git commit -m "good message"
+git pull mike master
+RESOLVE ALL CONFLICTS (IF ANY)
+AFTER RESOLVING OF CONFLICTS (if any), git add .
+AFTER RESOLVING OF CONFLICTS (if any), git commit -m "message explaining conflict resolution"
+git push origin master
+git pull mike master

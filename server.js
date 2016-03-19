@@ -3,9 +3,9 @@ var express = require('express'),
     path    = require('path'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    server  = express(),
-    Weather = require('./models/weather.model.js');
-    WeatherCtrl = require('./controllers/weather.controller.js');
+    server  = express(),  
+    Weather = require('./models/ride.model.js');
+    WeatherCtrl = require('./controllers/ride.controller.js');
     //Schema = mongoose.Schema,
 mongoose.connect('mongodb://uberbooster:5vgsdpFn@i!!rnAI7MHUGCI7st@ds023468.mlab.com:23468/motorcyclingweather');
 

@@ -50,4 +50,38 @@ function deleteRide(req, res){
   });
 };
 
+
+  $scope.moveUp = function(todo) {
+    var index = $scope.todos.indexOf(todo);
+        $scope.todos.splice(index, 1);
+        $scope.todos.splice(index-1, 0, todo);
+}
+
+  $scope.moveDown = function(todo) {
+    var index = $scope.todos.indexOf(todo);
+        $scope.todos.splice(index, 1);
+        $scope.todos.splice(index+1, 0, todo);
+}
+
+ //adds to completed list
+ // if we wish to have one
+  $scope.completedTodosList = [];
+    $scope.todo = {};
+      $scope.completedItem = function(todo) {
+    $scope.completedItemList.push(todo);
+
+    //deletes item from this main list
+  var remove = $scope.todos.indexOf(todo)
+    $scope.todos.splice(remove, 1);
+}
+
+   //deletes item from completed and moves back
+  $scope.removeCompleted = function(todo) {
+    $scope.todos.push(todo);
+      var remove = $scope.completedTodosList.indexOf(todo)
+    $scope.completedTodosList.splice(remove, 1);
+  }
+
+}
+
 module.exports = rideCtrl;

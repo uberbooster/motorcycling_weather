@@ -18,29 +18,30 @@ var mongoose = require('mongoose');
       startTime: {
         type: Date,
         required: false
-      }
+      },
       avoidHighways: {
         type: Boolean,
         required: false
-      }
+      },
       avoidTolls: {
         type: Boolean,
         required: false
-      }
+      },
       avoidFerries: {
         type: Boolean,
         required: false
-      }
+      },
       mode: {
         type: String,
         required: true
-      }
+      },
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
       }
     });
-    var rideSchema = new Schema({
+
+    // var rideSchema = new Schema({
 
 var Ride = mongoose.model('Ride', rideSchema);
 var User = mongoose.model('User', userSchema);

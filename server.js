@@ -4,6 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     server  = express(),
+
     Weather = require('./models/ride.model.js');
     WeatherCtrl = require('./controllers/ride.controller.js');
     //Schema = mongoose.Schema,

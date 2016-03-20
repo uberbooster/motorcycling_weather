@@ -3,9 +3,6 @@ var mongoose = require('mongoose');
 
     // Ride Model
     var userSchema = new Schema({
-      _id: {
-
-      },
       firstName: {
         type: String,
         required: true

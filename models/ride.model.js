@@ -41,9 +41,11 @@ var mongoose = require('mongoose');
       }
     });
 
-    // var rideSchema = new Schema({
+
+    var rideSchema = new Schema({
+
 
 var Ride = mongoose.model('Ride', rideSchema);
-var User = mongoose.model('User', userSchema);
+
 
 module.exports = Ride; //CommonJS - a way of exporting little packets of functionality

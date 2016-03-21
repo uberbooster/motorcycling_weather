@@ -17,7 +17,13 @@ function createRide(req, res){
   var desc = req.body.desc;
   var rideObj = {
     start: start,
-
+    end: end,
+    stops: stops,
+    startTime: startTime,
+    avoidHighways: avoidHighways,
+    avoidTolls: avoidTolls,
+    avoidFerries: avoidFerries
+    
   };
   Ride.create(rideObj, function(err, ride){
     if(err) throw err;
@@ -51,37 +57,35 @@ function deleteRide(req, res){
 };
 
 
-  $scope.moveUp = function(todo) {
-    var index = $scope.todos.indexOf(todo);
-        $scope.todos.splice(index, 1);
-        $scope.todos.splice(index-1, 0, todo);
-}
-
-  $scope.moveDown = function(todo) {
-    var index = $scope.todos.indexOf(todo);
-        $scope.todos.splice(index, 1);
-        $scope.todos.splice(index+1, 0, todo);
-}
-
- //adds to completed list
- // if we wish to have one
-  $scope.completedTodosList = [];
-    $scope.todo = {};
-      $scope.completedItem = function(todo) {
-    $scope.completedItemList.push(todo);
-
-    //deletes item from this main list
-  var remove = $scope.todos.indexOf(todo)
-    $scope.todos.splice(remove, 1);
-}
-
-   //deletes item from completed and moves back
-  $scope.removeCompleted = function(todo) {
-    $scope.todos.push(todo);
-      var remove = $scope.completedTodosList.indexOf(todo)
-    $scope.completedTodosList.splice(remove, 1);
-  }
-
-}
+//   $scope.moveUp = function(todo) {
+//     var index = $scope.todos.indexOf(todo);
+//         $scope.todos.splice(index, 1);
+//         $scope.todos.splice(index-1, 0, todo);
+// }
+//
+//   $scope.moveDown = function(todo) {
+//     var index = $scope.todos.indexOf(todo);
+//         $scope.todos.splice(index, 1);
+//         $scope.todos.splice(index+1, 0, todo);
+// }
+//
+//  //adds to completed list
+//  // if we wish to have one
+//   $scope.completedTodosList = [];
+//     $scope.todo = {};
+//       $scope.completedItem = function(todo) {
+//     $scope.completedItemList.push(todo);
+//
+//     //deletes item from this main list
+//   var remove = $scope.todos.indexOf(todo)
+//     $scope.todos.splice(remove, 1);
+// }
+//
+//    //deletes item from completed and moves back
+//   $scope.removeCompleted = function(todo) {
+//     $scope.todos.push(todo);
+//       var remove = $scope.completedTodosList.indexOf(todo)
+//     $scope.completedTodosList.splice(remove, 1);
+//   };
 
 module.exports = rideCtrl;

@@ -42,7 +42,7 @@ var mongoose = require('mongoose');
     });
 
 
-    var rideSchema = new Schema({
+    // var rideSchema = new Schema({
 
 
 var Ride = mongoose.model('Ride', rideSchema);

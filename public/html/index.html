@@ -1,13 +1,106 @@
 <!DOCTYPE html>
-<html >
+<html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
-
+        <link rel="stylesheet" href="css/styles.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+         <title></title>
+<div class= "container-fluid" id="navBar">
+         <a href= "/" class= "navbar-brand">
+            For the love of Music
+          </a>
+  <button class= "navbar-toggle" data-toggle = "collapse" data-target =".navHeaderCollapse">
+    <span class= "icon-bar"></span>
+    <span class= "icon-bar"></span>
+    <span class= "icon-bar"></span>
+   </button>
+  <div class = "collapse navbar-collapse navHeaderCollapse">
+          <ul class = "nav navbar-nav navbar-right">
+            <li class="active"><a href="#">
+              Oh,
+            </a>
+            <li class = "dropdown">
+              <a href="#" class = "dropdown-toggle" data-toggle = "dropdown">
+                    <small>the places</small><b class="caret"></b></a>
+                <ul class= "dropdown-menu">
+                  <li><a href = "#">Here</a></li>
+                  <li><a href = "#">There</a></li>
+                  <li><a href = "#">Everywhere</a></li>
+                </ul>
+            </li>
+            <li><a href="#">
+              you'll
+            </a></li>
+            <li><a href="#">
+               go!
+            </a></li>
+          </ul>
+        </div><hr>
+      </div>
+    </div>
 
-        <script type="text/javascript">
+    <body ng-controller='weatherController'>
+          <div class='container-fluid'>
+            <div class="col-md-4">
+            <h1 id="h1">where will you go?</h1>
+             <form name="guitar" ng-submit="createRide(obj)" id='leftSide'><!-- savefprm ID is just for styling-->
+               <input type="text" ng-model='Ride.start' class="saveForm" placeholder="Start">
+               <input type="text" ng-model='Ride.end' class="saveForm" placeholder="Finish">
+               <section title=".roundedOne">
+                <div class="roundedOne">
+                  <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                  <label for="roundedOne" ng-model='avoidHighways'>Avoid Highways</label>
+                </div>
+               </section>
+              <section title=".roundedOne">
+                <div class="roundedOne">
+                  <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                  <label for="roundedOne" ng-model='avoidTolls'>Avoid Tolls</label>
+                </div>
+               </section>
+               <section title=".roundedOne">
+                 <div class="roundedOne">
+                   <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                   <label for="roundedOne" ng-model='avoidFerries'>Avoid Ferries</label>
+                </div>
+              </section>
+              <section title=".roundedOne">
+               <div class="roundedOne">
+                 <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                 <label for="roundedOne" ng-model=''><img src="#"></img></label>
+               </div>
+              </section>
+             <section title=".roundedOne">
+               <div class="roundedOne">
+                 <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                 <label for="roundedOne" ng-model=''><img src="#"></img></label>
+               </div>
+              </section>
+              <section title=".roundedOne">
+                <div class="roundedOne">
+                  <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                  <label for="roundedOne" ng-model=''><img src="#"></img></label>
+               </div>
+               <button type="submit" id="submit">Save</button>
+             </div>
+             </section>
+            <!-- </div>
+             <div class="input">
+              <select ng-model="newTodo.">
+               <option value="" selected="selected">Difficulty Level</option>
+                <option value="Noobs">Noobs</option>
+                <option value="Beginners">Beginners</option>
+                <option value="Intermidate">Intermidate</option>
+                <option value="Expert">Expert</option>
+              </select>
+            </div> -->
+           </form>
+          <div class="col-md-6">
+            <div id='map'>
+          </div>
+            <script type="text/javascript">
             window.onload = function() {
 
                 var map,
@@ -23,8 +116,8 @@
 
                 dir.route({
                     locations: [
-                        '3424 sw wilston rd, Gainesvill fl',
-                        '1860 W Hwy 326, Ocala fl'
+                        {{Ride.start}},
+                        {{Ride.end}}
                     ]
                 });
 
@@ -37,6 +130,6 @@
     </head>
 
     <body style='border:0; margin: 0'>
-        <div id='map' style='width:1100px; height:530px;'></div>
+      <div id='map' style='width:1100px; height:530px;'></div>
     </body>
 </html>

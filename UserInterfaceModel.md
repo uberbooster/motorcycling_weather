@@ -27,3 +27,5 @@ AFTER RESOLVING OF CONFLICTS (if any), git add .
 AFTER RESOLVING OF CONFLICTS (if any), git commit -m "message explaining conflict resolution"
 git push origin master
 git pull mike master
+THEN GO TO Github.com and go to your forked repository and do a Pull Request.
+  It will ask for a title.  Put in a descriptive title and use the comments to put detailed stuff about the changes you made and if you're have any issues with the code you uploaded.

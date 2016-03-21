@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+//var User = require('User');
     Schema = mongoose.Schema;
 
     // Ride Model
@@ -40,7 +41,7 @@ var mongoose = require('mongoose');
         ref: 'User'
       }
     });
-    
+
 
 var Ride = mongoose.model('Ride', rideSchema);
 

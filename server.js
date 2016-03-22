@@ -23,6 +23,15 @@ server.get('/', function(req, res){
 server.get('/brad', function(req, res){
   res.sendFile('/public/html/brad.html', {root:__dirname});
 });
+server.get('/mike', function(req, res){
+  res.sendFile('/public/html/mike.html', {root:__dirname});
+});
+server.get('/kevin', function(req, res){
+  res.sendFile('/public/html/kevin.html', {root:__dirname});
+});
+server.get('/ting', function(req, res){
+  res.sendFile('/public/html/ting.html', {root:__dirname});
+});
 
 server.listen(port, function(){
   console.log('Now listening on port ' + port);

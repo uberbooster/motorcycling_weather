@@ -20,6 +20,9 @@ server.use(bodyParser.urlencoded({extended: true})); // for parsing application/
 server.get('/', function(req, res){
   res.sendFile('/public/html/index.html', {root:__dirname});
 });
+server.get('/brad', function(req, res){
+  res.sendFile('/public/html/brad.html', {root:__dirname});
+});
 
 server.listen(port, function(){
   console.log('Now listening on port ' + port);

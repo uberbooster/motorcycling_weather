@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
+        <link rel="stylesheet" href="css/ting.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                var map,
+                    dir;
+                map = L.map('map', {
+                  layers: MQ.mapLayer(),
+                  center: [ 38.895345, -77.030101 ],
+                  zoom: 15
+                });
+                dir = MQ.routing.directions();
+                dir.route({
+                    locations: [
+                        '3424 sw wilston rd, Gainesvill fl',
+                        '1860 W Hwy 326, Ocala fl'
+                    ]
+                });
+                map.addLayer(MQ.routing.routeLayer({
+                    directions: dir,
+                    fitBounds: true
+                }));
+            }
+        </script>
+    </head>
+    <body style='border:0; margin: 0'>
+        <div id='map' style='width:1100px; height:530px;'></div>
+    </body>
+</html>

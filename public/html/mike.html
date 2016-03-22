@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head ng-app='motorcyclingWeatherApp'>
+  <meta charset="UTF-8">
+  <title>Motocycling Weather</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.js'></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css'/>
+  <link rel="stylesheet" href="css/mike.css">
+</head>
+<body ng-controller='motorcyclingWeatherController'>
+  <div class="container input-header">
+    <div class="row">
+      <div class="form-group">
+        <label>Enter a starting city and state or zipcode for your ride: </label>
+        <input type="text" class='form-control' id='start' ng-model='start'>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label>Enter an ending city and state or zipcode for your ride: </label>
+        <input type="text" class='form-control' id='end' ng-model='end'>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label>Enter the start time of your ride: </label>
+        <input type="text" class='form-control' id='departureTime' ng-model='departureTime'>
+      </div>
+    </div>
+
+    <form name="departureTime" ng-controller="DateController as dateCtrl">
+      <label for="exampleInput">Pick a time you plan to leave: </label>
+      <input type="time" id="exampleInput" name="input" ng-model="example.value"
+        placeholder="{{CurrentDate | date:'hh:mm:ss a'}}"/>
+      <div role="alert">
+        <span class="error" ng-show="departureTime.input.$error.required">Required!</span>
+        <span class="error" ng-show="departureTime.input.$error.time">Not a valid date!</span>
+      </div>
+      <tt>value = {{example.value | date: "HH:mm:ss"}}</tt><br/>
+      <tt>departureTime.input.$valid = {{departureTime.input.$valid}}</tt><br/>
+      <tt>departureTime.input.$error = {{departureTime.input.$error}}</tt><br/>
+      <tt>departureTime.$valid = {{departureTime.$valid}}</tt><br/>
+      <tt>departureTime.$error.required = {{!!departureTime.$error.required}}</tt><br/>
+    </form>
+    <button class="btn btn-default" id='get-weather'>Get Weather</button>
+  </div>
+  <!-- https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=gainesville,fl&destinations=ocala,fl|tampa,fl-->
+
+</body>
+</html>

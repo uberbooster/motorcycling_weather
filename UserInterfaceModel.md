@@ -28,6 +28,7 @@ Before we work on the project we need to...
 3. git commit -m "good message"
  -after all your work complete
 4. switch back to master
+  git checkout master
 5. git pull mike master
 6. switch back to [branchName]
  - git checkout [branchName]

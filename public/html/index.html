@@ -4,14 +4,19 @@
       <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
         <link rel="stylesheet" href="css/styles.css">
-         <title></title>
-<div class= "container-fluid" id="navBar">
-         <a href= "/" class= "navbar-brand">
+         <title>
+
+
+         </title>
+       </head>
+
+     <div class= "container-fluid" id="navBar">
+       <a href= "/" class= "navbar-brand">
             For the love of Music
           </a>
   <button class= "navbar-toggle" data-toggle = "collapse" data-target =".navHeaderCollapse">
@@ -104,6 +109,8 @@
             <div id='map'>
           </div>
             <script type="text/javascript">
+            var start = Ride.start;
+            var finish = Ride.finish;
             window.onload = function() {
 
                 var map,
@@ -119,8 +126,8 @@
 
                 dir.route({
                     locations: [
-                        {{Ride.start}},
-                        {{Ride.end}}
+                        start= start,
+                        finish= finish,
                     ]
                 });
 

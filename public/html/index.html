@@ -8,21 +8,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
-<<<<<<< HEAD
-        <link rel="stylesheet" href="css/styles.css">
+       <link rel="stylesheet" href="css/styles.css">
          <title>
 
 
          </title>
        </head>
-
-     <div class= "container-fluid" id="navBar">
-       <a href= "/" class= "navbar-brand">
-=======
         <title>Motorcycling Weather</title>
+        <div class= "navbar navbar-inverse navbar-static-top">
         <div class= "container-fluid" id="navBar">
           <a href= "/" class= "navbar-brand">
->>>>>>> 7c154acf24e4641136fba80e5d67e89e7907c3fd
             For the love of Music
           </a>
           <button class= "navbar-toggle" data-toggle = "collapse" data-target =".navHeaderCollapse">
@@ -54,43 +49,16 @@
               </li>
             </ul>
           </div>
+        </div>
           <hr>
         </div>
-        <script type="text/javascript">
-        window.onload = function() {
-
-            var map,
-                dir;
-
-            map = L.map('map', {
-              layers: MQ.mapLayer(),
-              center: [ 38.895345, -77.030101 ],
-              zoom: 15
-            });
-
-            dir = MQ.routing.directions();
-
-            dir.route({
-                locations: [
-                    {{Ride.start}},
-                    {{Ride.end}}
-                ]
-            });
-
-            map.addLayer(MQ.routing.routeLayer({
-                directions: dir,
-                fitBounds: true
-            }));
-        }
-    </script>
-    </head>
 
     <body ng-controller='weatherController'>
           <div class='container-fluid'>
             <div class="col-md-4">
               <h1 id="h1">where will you go?</h1>
-              <form name="guitar" ng-submit="createRide(obj)" id='leftSide'><!-- savefprm ID is just for styling-->
-                <input type="text" ng-model='Ride.start' class="saveForm" placeholder="Start">
+              <form name="guitar" ng-submit="createRide(rideObj)" id='leftSide'><!-- savefprm ID is just for styling-->
+                <input type="text" ng-model='Ride.end' class="saveForm" placeholder="Start">
                 <input type="text" ng-model='Ride.end' class="saveForm" placeholder="Finish">
                 <section title=".roundedOne">
                   <div class="roundedOne">
@@ -146,13 +114,10 @@
           <div class="col-md-6">
             <div id='map'>
           </div>
-<<<<<<< HEAD
             <script type="text/javascript">
-            var start = Ride.start;
-            var finish = Ride.finish;
-            window.onload = function() {
 
-                var map,
+            window.onload = function() {
+                    var map,
                     dir;
 
                 map = L.map('map', {
@@ -165,8 +130,8 @@
 
                 dir.route({
                     locations: [
-                        start= start,
-                        finish= finish,
+                      'gainesville',
+                      'tampa'
                     ]
                 });
 
@@ -177,8 +142,6 @@
             }
         </script>
     </head>
-=======
->>>>>>> 7c154acf24e4641136fba80e5d67e89e7907c3fd
 
-    
+
 </html>

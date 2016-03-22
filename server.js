@@ -8,8 +8,8 @@ var express = require('express'),
     WeatherCtrl = require('./controllers/ride.controller.js');
     TimeCtrl = require('./controllers/time.controller.js');
     Schema = mongoose.Schema,
-mongoose.connect('mongodb://uberbooster:5vgsdpFn@i!!rnAI7MHUGCI7st@ds023468.mlab.com:23468/motorcyclingweather');
-//mongoose.connect('mongodb://localhost/motorcyclingWeatherApp');
+//mongoose.connect('mongodb://uberbooster:5vgsdpFn@i!!rnAI7MHUGCI7st@ds023468.mlab.com:23468/motorcyclingweather');
+mongoose.connect('mongodb://localhost/motorcyclingWeatherApp');
 
 var port = process.env.PORT || 9000;
 

@@ -29,18 +29,18 @@
     </div>
 
     <form name="departureTime" ng-controller="DateController as dateCtrl">
-      <label for="exampleInput">Pick a time you plan to leave: </label>
-      <input type="time" id="exampleInput" name="input" ng-model="example.value"
+      <label for="timeInput">Pick a time you plan to leave: </label>
+      <input type="time" id="timeInput" name="input" ng-model="example.value"
         placeholder="{{CurrentDate | date:'hh:mm:ss a'}}"/>
       <div role="alert">
         <span class="error" ng-show="departureTime.input.$error.required">Required!</span>
         <span class="error" ng-show="departureTime.input.$error.time">Not a valid date!</span>
       </div>
-      <tt>value = {{example.value | date: "HH:mm:ss"}}</tt><br/>
-      <tt>departureTime.input.$valid = {{departureTime.input.$valid}}</tt><br/>
-      <tt>departureTime.input.$error = {{departureTime.input.$error}}</tt><br/>
-      <tt>departureTime.$valid = {{departureTime.$valid}}</tt><br/>
-      <tt>departureTime.$error.required = {{!!departureTime.$error.required}}</tt><br/>
+      <kbd>value = {{example.value | date: "HH:mm:ss"}}</kbd><br/>
+      <kbd>departureTime.input.$valid = {{departureTime.input.$valid}}</kbd><br/>
+      <kbd>departureTime.input.$error = {{departureTime.input.$error}}</kbd><br/>
+      <kbd>departureTime.$valid = {{departureTime.$valid}}</kbd><br/>
+      <kbd>departureTime.$error.required = {{!!departureTime.$error.required}}</kbd><br/>
     </form>
     <button class="btn btn-default" id='get-weather'>Get Weather</button>
   </div>

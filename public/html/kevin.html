@@ -8,6 +8,7 @@
   <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
   <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="css/kevin.css">
     <title>Motorcycling Weather</title>
      <div class= "navbar navbar-inverse navbar-static-top">
@@ -52,7 +53,7 @@
     <div class='container-fluid'>
       <div class="here">
         <h1 id="h1">It's a beautiful day! Let's plan your adventuer:</h1>
-          <form name="guitar" ng-submit="initialize()" id='leftSide'>
+          <form name="guitar" ng-submit="initialize" id='leftSide'>
           <input type="text" id="zoek" ng-model='Ride.start' class="saveForm" placeholder="Start">
           <input type="text" id="zoek2"ng-model='Ride.end' class="saveForm" placeholder="Finish">
             <!-- <section title=".roundedOne">
@@ -126,8 +127,8 @@
         name: "Styled Map"
       });
 
-      var pos = new google.maps.LatLng(29, -82);
-      var center = new google.maps.LatLng(29, -82);
+      var pos = new google.maps.LatLng(29.6520, -82.3250);
+      var center = new google.maps.LatLng(29.6520, -82.3250);
 
       map = new google.maps.Map(document.getElementById('map'), {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -151,7 +152,7 @@
       });
 
 
-     var newPos = new google.maps.LatLng(29, -82);
+     var newPos = new google.maps.LatLng();
       var request = {
         location: pos,
         radius: 5000,
@@ -222,21 +223,20 @@
 
     initialize();
 
- //autocomplete for start
+ //autocomplete for search
     var place;
     var autocomplete = new google.maps.places.Autocomplete(zoek);
 
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
         place = autocomplete.getPlace();
         console.log(place);
 });
- //autocomplete for finish
-    var place;
-    var autocomplete = new google.maps.places.Autocomplete(zoek2);
+var place;
+var autocomplete = new google.maps.places.Autocomplete(zoek2);
 
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-       place = autocomplete.getPlace();
-       console.log(place);
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    place = autocomplete.getPlace();
+    console.log(place);
 });
   </script>
  </body>

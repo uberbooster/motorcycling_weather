@@ -5,6 +5,7 @@ morgan = require('morgan');
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     server  = express(),
+
     passport = require ('passport'),
     flash = require ('connect-flash'),
     session = require('express-session'),
@@ -12,6 +13,7 @@ morgan = require('morgan');
     configDB = require('./config/database.js');
     Weather = require('./models/ride.model.js');
     WeatherCtrl = require('./controllers/ride.controller.js');
+
     TimeCtrl = require('./controllers/time.controller.js');
 
     Schema = mongoose.Schema,

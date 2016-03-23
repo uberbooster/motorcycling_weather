@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head ng-app='motorcyclingWeatherApp'>
+<html lang="en" ng-app='motoWeatherApp'>
+<head>
   <meta charset="UTF-8">
   <title>Motocycling Weather</title>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.2/moment-timezone.js"></script>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css'/>
   <link rel="stylesheet" href="css/mike.css">
 </head>
-<body ng-controller='motorcyclingWeatherController'>
+
+<body ng-controller='WeatherController'>
+  {{start}}
+  {{departureTime.value}}
   <div class="container input-header">
     <div class="row">
       <div class="form-group">
-        <label>Enter a starting city and state or zipcode for your ride: </label>
+        <label>Enter a starting city and state or address for your ride: </label>
         <input type="text" class='form-control' id='start' ng-model='start'>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
-        <label>Enter an ending city and state or zipcode for your ride: </label>
+        <label>Enter an ending city and state or address for your ride: </label>
         <input type="text" class='form-control' id='end' ng-model='end'>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
         <label>Enter the start time of your ride: </label>
-        <input type="text" class='form-control' id='departureTime' ng-model='departureTime'>
+        <input type="text" class='form-control' id='departureTime' ng-model='departureTime.value'>
       </div>
     </div>
+{{departureTime.value}}
+<p></p>
+{{tfYear}}, {{tfMonth}}, {{tfDay}}, {{tfHour}}, {{tfMinute}}, 0
+</p>
+<p>
 
-    <form name="departureTime" ng-controller="DateController as dateCtrl">
-      <label for="timeInput">Pick a time you plan to leave: </label>
-      <input type="time" id="timeInput" name="input" ng-model="example.value"
-        placeholder="{{CurrentDate | date:'hh:mm:ss a'}}"/>
-      <div role="alert">
-        <span class="error" ng-show="departureTime.input.$error.required">Required!</span>
-        <span class="error" ng-show="departureTime.input.$error.time">Not a valid date!</span>
-      </div>
-      <kbd>value = {{example.value | date: "HH:mm:ss"}}</kbd><br/>
-      <kbd>departureTime.input.$valid = {{departureTime.input.$valid}}</kbd><br/>
-      <kbd>departureTime.input.$error = {{departureTime.input.$error}}</kbd><br/>
-      <kbd>departureTime.$valid = {{departureTime.$valid}}</kbd><br/>
-      <kbd>departureTime.$error.required = {{!!departureTime.$error.required}}</kbd><br/>
-    </form>
+</p>
+<form>
+   <label for="exampleInput">Pick a time leave for your ride: </label>
+   <input type="time" step="900" id="exampleInput" name="input" ng-model="departureTime.value" required />
+   <div role="alert">
+     <span class="error" ng-show="myForm.input.$error.required">
+         Required!</span>
+     <span class="error" ng-show="myForm.input.$error.time">
+         Not a valid date!</span>
+   </div>
+   <tt>value = {{departure.Time.value | date: "HH:mm:ss"}}</tt><br/>
+   <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+   <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+   <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+   <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+</form>
     <button class="btn btn-default" id='get-weather'>Get Weather</button>
   </div>
   <!-- https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=gainesville,fl&destinations=ocala,fl|tampa,fl-->
-
+<script src="js/app.js"></script>
 </body>
 </html>

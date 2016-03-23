@@ -1,0 +1,109 @@
+body {
+  background-color:#f5ca75;
+}
+a {
+  text-decoration: none;
+}
+#todoList, #updateWindow, #completed {
+  background: rgba(242,246,248,1);
+  background: -moz-linear-gradient(left, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 99%, rgba(224,239,249,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(242,246,248,1)), color-stop(0%, rgba(216,225,231,1)), color-stop(99%, rgba(181,198,208,1)), color-stop(100%, rgba(224,239,249,1)));
+  background: -webkit-linear-gradient(left, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 99%, rgba(224,239,249,1) 100%);
+  background: -o-linear-gradient(left, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 99%, rgba(224,239,249,1) 100%);
+  background: -ms-linear-gradient(left, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 99%, rgba(224,239,249,1) 100%);
+  background: linear-gradient(to right, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 0%, rgba(181,198,208,1) 99%, rgba(224,239,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=1 );
+}
+/*#todoList {
+  -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+
+    -webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+
+    -webkit-column-rule: 2px outset #ff00ff;
+    -moz-column-rule: 2px outset #ff00ff;
+    column-rule: 2px o
+}*/
+ #completed{
+   text-decoration: line-through;
+
+ }
+#updateWindow {
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+#h1 {
+  text-align: center;
+  margin-left:4%;
+  margin-bottom:-1%;
+}
+#h2 {
+  text-align: center;
+}
+#h3 {
+  text-align: center;
+}
+#remove {
+  margin-top:-17px;
+}
+#form {
+  float: right;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 0%;
+}
+
+.saveForm {
+  text-align: center;
+  margin-top:1%;
+}
+.here {
+  align-content: center;
+}
+#submit {
+  margin-top: 5px;
+}
+
+.roundedOne {
+  margin-right:-100px;
+}
+  /* map styling*/
+#map {
+       float: right;
+       height: 400px;
+       width: 50%;
+       border: 6px solid #dedede;
+       margin: 0em auto;
+       margin-bottom: 5px;
+     }
+     #results {
+       float: right;
+       z-index:9999;
+       width:630px;
+       height:400px;
+       background:#222;
+       position: static;
+       top:0;
+       bottom:0;
+       left:60px;
+       right:0px;
+       color:#ccc;
+       overflow-y:scroll;
+       font-size:.82em;
+       padding:12px 5px;
+       line-height:1.333;
+       margin-left: 3%;
+     }
+     .school {
+       color:lightblue;
+     }
+     .restaurant, .bar, .food, .store {
+       color:orange;
+     }
+     .park {
+       color:green;
+     }

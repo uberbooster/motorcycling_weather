@@ -23,10 +23,12 @@ Before we work on the project we need to...
 #Once you have an up to date master branch from the main repository
 1. create a branch and switch to it
  - git checkout -B [branchName]
+ (work on your changes)
 2. git add .
 3. git commit -m "good message"
  -after all your work complete
 4. switch back to master
+  git checkout master
 5. git pull mike master
 6. switch back to [branchName]
  - git checkout [branchName]

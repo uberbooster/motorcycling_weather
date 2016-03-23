@@ -6,24 +6,27 @@
   <link rel="stylesheet" href="css/brad.css">
 </head>
 <body>
+  <span>Motorcycling Weather</span>
+
   <div class="row">
     <div class="col-md-2 col-sm-2 col-xs-2">
-        <p><button class="btn btn-primary btn-sm" id="get-weather-btn"><span>Get Weather</span></button></p>
-    </div><!-- .col -->
+        <p><button class="btn btn-primary btn-sm" id="get-weather-btn"><h6>Get Weather</h6></button></p>
+    </div>
     <div class="col-md-10 col-sm-10 col-xs-10">
         <div class="panel panel-default">
             <div class="panel-heading">Weather &amp; Location Response</div>
             <div class="panel-body">
                 <p>Enter Address: <input id="address" type="text" class="form-control"/></p>
-                <p>Lat/Long: <input id="location-lat-long" type="text" class="form-control"/></p>
+                <!-- <p>Lat/Long: <input id="location-lat-long" type="text" class="form-control"/></p> -->
                 <p>Weather: <textarea id="weather" class="form-control"></textarea></p>
                 <div id="map-canvas" style="min-height: 400px;"></div>
             </div>
         </div>
     </div><!-- .col -->
   </div><!-- .row -->
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
   <script>
     "use strict";
     var geocoder;
@@ -61,10 +64,10 @@
     function getWeather(latitude,longitude) {
         if(latitude != '' && longitude != '') {
             $("#weather").val("Retrieving weather...");                                     // write temporary response while we get the weather
-            $.getJSON( "http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=70bff09f2c90ff6cd223d8e0fd151356="+latitude+"&lon="+longitude+"&units=imperial", function(data) {    // add '&units=imperial' to get U.S. measurements
+            $.getJSON( "http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=49b536f5492e476dcd32ff7079b98875&lat="+latitude+"&lon="+longitude+"&units=imperial", function(data) {    // add '&units=imperial' to get U.S. measurements
                 var currWeather                 = new Array();                              // create array to hold our weather response data
-                currWeather['currTemp']         = Math.round(data.main.temp);               // current temperature
-                currWeather['highTemp']         = Math.round(data.main.temp_max);           // today's high temp
+                currWeather['currTemp']         = Math.round([0].main.temp);               // current temperature
+                currWeather['highTemp']         = Math.round(jsondata.list[0].data.main.temp_max);           // today's high temp
                 currWeather['lowTemp']          = Math.round(data.main.temp_min);           // today's low temp
                 currWeather['humidity']         = Math.round(data.main.humidity);           // humidity (in percent)
                 currWeather['pressure']         = data.main.pressure * 0.02961339710085;    // barometric pressure (converting hPa to inches)

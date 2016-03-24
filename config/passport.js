@@ -23,7 +23,7 @@ module.exports = function(passport) {
     function(req, email, password, done) {
         process.nextTick(function() {
 
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+        User.findOne({ 'local.username' :  email }, function(err, user) {
 
             if (err)
                 return done(err);
@@ -33,7 +33,7 @@ module.exports = function(passport) {
             } else {
 
                 var newUser = new User();
-                newUser.local.email = email;
+                newUser.local.username = email;
                 newUser.local.password = newUser.generateHash(password);
 
                 newUser.save(function(err) {
@@ -48,8 +48,33 @@ module.exports = function(passport) {
         });
 
     }));
+    passport.use('local-login', new LocalStrategy({
+
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true
+    },
+    function(req, email, password, done) {
+        User.findOne({ 'local.username' :  email }, function(err, user) {
+
+            if (err)
+                return done(err);
+
+            // if no user is found, return the message
+            if (!user)
+                return done(null, false, req.flash('loginMessage', 'No user found.'));
+            // if the user is found but the password is wrong
+            if (!user.validPassword(password))
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong email or password.'));
+            // all is well, return successful user
+            return done(null, user);
+        });
+
+    }));
 
 };
+
+
 // var LocalStrategy = require ('passport -local').Strategy;
 // var user = require('../js/user');
 // module.exports = function(passport){

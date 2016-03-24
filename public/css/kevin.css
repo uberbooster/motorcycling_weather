@@ -37,7 +37,7 @@ a {
 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 #h1 {
-  text-align: left;
+  text-align: center;
   margin-left:4%;
   margin-bottom:-1%;
 }
@@ -61,19 +61,49 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   text-align: center;
   margin-top:1%;
 }
-
+.here {
+  align-content: center;
+}
 #submit {
   margin-top: 5px;
 }
 
-
-.dropdown {
-
-}
-#map {
-  width:600px;
-  height:300px;
-}
 .roundedOne {
   margin-right:-100px;
 }
+  /* map styling*/
+#map {
+       float: right;
+       height: 400px;
+       width: 50%;
+       border: 6px solid #dedede;
+       margin: 0em auto;
+       margin-bottom: 5px;
+     }
+     #results {
+       float: right;
+       z-index:9999;
+       width:630px;
+       height:400px;
+       background:#222;
+       position: static;
+       top:0;
+       bottom:0;
+       left:60px;
+       right:0px;
+       color:#ccc;
+       overflow-y:scroll;
+       font-size:.82em;
+       padding:12px 5px;
+       line-height:1.333;
+       margin-left: 3%;
+     }
+     .school {
+       color:lightblue;
+     }
+     .restaurant, .bar, .food, .store {
+       color:orange;
+     }
+     .park {
+       color:green;
+     }

@@ -5,7 +5,7 @@ angular.module('motoWeatherApp') //this is the getter syntax, we can use this so
       .controller('WeatherController', WeatherController);
 
 WeatherController.$inject = ['$scope', '$http'];//service going to use
-
+ var isLoggedInNow = false;
 function WeatherController($scope, $http){
   $scope.departureTime = {
       value: moment().toDate()

@@ -2,13 +2,17 @@
 <html lang="en" ng-app='motoWeatherApp'>
 <!DOCTYPE html>
 <html >
+
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/ting.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+
         <script type="text/javascript">
+
             window.onload = function() {
                 var map,
                     dir;
@@ -31,7 +35,92 @@
             }
         </script>
     </head>
-    <body style='border:0; margin: 0'>
-        <div id='map' style='width:1100px; height:530px;'></div>
+    <body ng-controller='WeatherController'>
+      <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+          <div class="container-fluid">
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!-- <a ng-if='!isLoggedInNow' href="/">Signup/Login</a> -->
+                    <a>Hi, <%= user.local.username %></a>
+                      <!-- <strong>email</strong>: <%= user.local.email %><br>
+                      <strong>password</strong>: <%= user.local.password %> -->
+                    </li>
+                      <li>
+                          <a href="/profile">New Trip</a>
+                      </li>
+                      <li>
+                          <a href="/triphistory">Trip History</a>
+                      </li>
+                      <li>
+                          <a href="/journal">Trip Journal</a>
+                      </li>
+                      <li>
+                          <a href="/checklist">Trip Checklist</a>
+                      </li>
+
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
+
+      <div class="row" style = 'margin-top:70px; margin-left:30px;'>
+
+        <div class="container input-header col-md-3 col-sm-12">
+            <div class="form-group" style = 'margin-left:30px;'>
+              {{start}}<br>
+              {{departureTime.value}}<br>
+              <label>Departure City: </label>
+              <input type="text" class='form-control' id='start' ng-model='start'>
+            </div>
+
+          <div class="row"style ="margin-left:30px;">
+            <div class="form-group">
+              <label>Destination City: </label>
+              <input type="text" class='form-control' id='end' ng-model='end'>
+            </div>
+          </div>
+          <div class="row" style ="margin-left:30px;">
+            <div class="form-group">
+              <label>Departure Time: </label>
+              <input type="text" class='form-control' id='departureTime' ng-model='departureTime.value'>
+            </div>
+          </div>
+      <div style = 'margin-left:30px;' >{{departureTime.value}}
+      <p></p>
+      {{tfYear}}, {{tfMonth}}, {{tfDay}}, {{tfHour}}, {{tfMinute}}, 0
+      </p>
+      <p>
+
+      </p></div>
+      <form style ="margin-left:30px;">
+         <label for="exampleInput">Pick a time leave for your ride: </label>
+         <input type="time" step="900" id="exampleInput" name="input" ng-model="departureTime.value" required />
+         <div role="alert">
+           <span class="error" ng-show="myForm.input.$error.required">
+               Required!</span>
+           <span class="error" ng-show="myForm.input.$error.time">
+               Not a valid date!</span>
+         </div>
+         <tt>value = {{departure.Time.value | date: "HH:mm:ss"}}</tt><br/>
+         <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+         <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+         <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+         <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+      </form>
+          <button class="btn btn-default" id='get-weather'>Get Weather</button></div>
+          <div class="col-md-6 col-sm-12">
+          <div id='map' style='width:530px; height:430px; margin-top:70px;'></div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+          <p>Ads</p>
+        </div>
+      </div>
+
+        <!-- https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=gainesville,fl&destinations=ocala,fl|tampa,fl-->
+      <script src="js/app.js"></script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 var LocalStrategy   = require('passport-local').Strategy;
 
 // load up the user model
-var User            = require('../app/models/user');
+var User = require('../app/models/user');
 
 module.exports = function(passport) {
 
@@ -46,11 +46,13 @@ module.exports = function(passport) {
         });
 
         });
-
+        // console.log(req)
+        console.log(email)
+        console.log(password)
     }));
     passport.use('local-login', new LocalStrategy({
-
         usernameField : 'email',
+
         passwordField : 'password',
         passReqToCallback : true
     },

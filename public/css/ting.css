@@ -1,6 +1,13 @@
-.jumbotron{
-  background-color:rgba(230, 230, 230, 0.5);
-  height: 50%;
-  width:50%;
-  margin: 20%;
+
+.loginpic{
+  background-image: url('../image/rsz_1dt.jpg');
+  background-size: cover;
+
+}
+.pic{
+  background-image: url('../image/rsz_1dt.jpg');
+  background-size: cover;
+}
+.back{
+  background-color:transparent;
 }

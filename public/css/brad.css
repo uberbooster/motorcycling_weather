@@ -1,23 +1,57 @@
+#map{
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  margin-top: 20px;
+  border-color: silver;
 
+
+
+}
 body{
- background-color:
- background-color:#ff5100;
- filter:progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#ff5100, endColorstr=#a6ccde);
- background-image:-moz-linear-gradient(left bottom, #ff5100 16%, #a6ccde 46%,#000000 100%);
-background-image:linear-gradient(left bottom, #ff5100 16%, #a6ccde 46%,#000000 100%);
-background-image:-webkit-linear-gradient(left bottom, #ff5100 16%, #a6ccde 46%,#000000 100%);
-background-image:-o-linear-gradient(left bottom, #ff5100 16%, #a6ccde 46%,#000000 100%);
-background-image:-ms-linear-gradient(left bottom, #ff5100 16%, #a6ccde 46%,#000000 100%);
- background-image:-webkit-gradient(linear, left bottom, right top, color-stop(16%,#ff5100), color-stop(46%,#a6ccde),color-stop(100%,#000000));
-border-style: inset;
-border: 5px solid black;
-font-family: monospace;
-padding-top:55px;
- }
-button{
-  background-color: silver;
-  color:black;
-  }
-span{
-  font-size: 45px;
+  width:874px;height:483px;
+   background-color:#f57118;
+   filter:progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#f57118, endColorstr=#020d12);
+   background-image:-moz-linear-gradient(right bottom, #f57118 4%, #020d12 64%);
+   background-image:-webkit-linear-gradient(right bottom, #f57118 4%, #020d12 64%);
+   background-image:-ms-linear-gradient(right bottom, #f57118 4%, #020d12 64%);
+   background-image:linear-gradient(right bottom, #f57118 4%, #020d12 64%);
+   background-image:-o-linear-gradient(right bottom, #f57118 4%, #020d12 64%);
+   background-image:-webkit-gradient(linear, right bottom, left top, color-stop(4%,#f57118), color-stop(64%,#020d12));
+   color: silver;
+
+
+}
+#get-weather{
+  background-color: orange;
+  border-color: silver;
+  color: black;
+
+  color: rgb(255, 255, 255);
+  font-size: 39px;
+  background-color: rgb(51, 51, 51);
+  text-shadow: rgb(255, 255, 255) 0px -1px 4px, rgb(255, 255, 0) 0px -2px 10px, rgb(255, 128, 0) 0px -10px 20px, rgb(255, 0, 0) 0px -18px 40px;
+
+
+}
+#origin{
+  background-color: black;
+}
+#destination{
+  background-color: black;
+}
+#city-zip{
+  background-color: black;
+}
+#start{
+  background-color: black;
+}
+#end{
+  background-color: black;
+}
+#departureTime{
+  background-color: black;
+}
+#exampleInput{
+  background-color: black;
 }

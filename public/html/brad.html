@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <link rel="stylesheet" href="css/brad.css">
   <title>motorcycling weather</title>
 </head>
 <body>
@@ -22,57 +22,35 @@
   <label for="avoidTolls">Avoid Tolls</label><br/>
   <input id="avoidFerries" type="checkbox" ng-model='avoidFerries'>
   <label for="avoidFerries">Avoid Ferries</label><br/>
-
-  <!-- <iframe src="http://www.google.com/maps/embed/v1/directions?origin="+{{origin}}+"&destination="+{{destination}}></iframe> -->
-
-
-  <!-- <header>GO OUTSIDE??? OR, STAY IN AND,STREAM???</header> -->
-  <button class="js-geolocation" style="display: none;">Use Your Location</button>
-
-    <!-- <div id="image-table">
-    <table>
-      <tr>
-        <td style="padding:5px">
-          <img src="images/mountain.jpg">
-        </td>
-        <td style="padding:5px">
-          <img src="images/spongebob.jpg">
-        </td>
-      </tr>
-    </table>
-  </div> -->
-  <!-- <div class='container'> -->
-    <!-- <div class='row'> -->
-      <!-- <div class='form-group'> -->
-         <!-- <label><h3>Where are you?</h3></label> -->
-        <!-- <span class="input input--haruki"> -->
-	<!-- <input class="input__field input__field--haruki" type="text" id="city-zip" /> -->
-	<!-- <label class="input__label input__label--haruki" for="input-1"> -->
-		<!-- <span class="input__label-content input__label-content--haruki"><h5>City?<h5></span> -->
-	<!-- </label> -->
-<!-- </span>
-      </div>
-      <button class="btn btn-default" id='get-weather'>Veg Out?/Go play?</button>
-    </div>
-    <div id="map"></div>
-    <div id="output"></div>
+  <div class='container'>
+      <div class='row'>
+        <div class='form-group'>
+          <label><h3>Where are you?</h3></label>
+          <span class="input input--haruki">
+  	<input class="input__field input__field--haruki" type="text" id="city-zip" />
+  	<label class="input__label input__label--haruki" for="input-1">
+  		<span class="input__label-content input__label-content--haruki"><h5>City?<h5></span>
+  	</label>
+  </span>
+  <button class="btn btn-default" id='get-weather'>Go Ride?</button>
   </div>
-</div>
-</div>
-</div> -->
+  <body>
+ <div id="map"></div>
+ <script>
+   function initMap() {
+     var mapDiv = document.getElementById('map');
+     var map = new google.maps.Map(mapDiv, {
+       center: {lat: 44.540, lng: -78.546},
+       zoom: 8
+     });
+   }
+ </script>
+ <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+     async defer></script>
 
 
-<script>
-function initMap() {
-  var mapDiv = document.getElementById('map');
-  var map = new google.maps.Map(mapDiv, {
-    center: {lat: 29, lng: -82},
-    zoom: 8
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-<script id='weather-results' type='text/x-handlebars-template'>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script> -->
+<!-- <script id='weather-results' type='text/x-handlebars-template'>
   <div class="container">
     <div class="row City">
       <div class="col-md-2"><h4>City:</h4><h4>{{ city }}</h4></div>
@@ -94,16 +72,56 @@ function initMap() {
     </div>
     <div class="row">
     <div class="col-md-2"><h4>Humidity:</h4><h4>{{ humidity }}</h4></div>
-  </div>
+  </div> -->
     <hr>
-    <div id="image-table">
-      <table>
-        <tr>
-          <td style="padding:5px">
-            <img src="images/family-guy-tv.jpg">
-            </td>
-        </tr>
-      </table>
+
+    <body ng-controller='WeatherController'>
+      {{start}}
+      {{departureTime.value}}
+      <div class="container input-header">
+        <div class="row">
+          <div class="form-group">
+            <label>Enter a starting city and state or address for your ride: </label>
+            <input type="text" class='form-control' id='start' ng-model='start'>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Enter an ending city and state or address for your ride: </label>
+            <input type="text" class='form-control' id='end' ng-model='end'>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>Enter the start time of your ride: </label>
+            <input type="text" class='form-control' id='departureTime' ng-model='departureTime.value'>
+          </div>
+        </div>
+    {{departureTime.value}}
+    <p></p>
+    {{tfYear}}, {{tfMonth}}, {{tfDay}}, {{tfHour}}, {{tfMinute}}, 0
+    </p>
+    <p>
+
+    </p>
+    <form>
+       <label for="exampleInput">Pick a time leave for your ride: </label>
+       <input type="time" step="900" id="exampleInput" name="input" ng-model="departureTime.value" required />
+       <div role="alert">
+         <span class="error" ng-show="myForm.input.$error.required">
+             Required!</span>
+         <span class="error" ng-show="myForm.input.$error.time">
+             Not a valid date!</span>
+       </div>
+       <tt>value = {{departure.Time.value | date: "HH:mm:ss"}}</tt><br/>
+       <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+       <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+       <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+       <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+    </form>
+        <button class="btn btn-default" id='get-weather'>Get Weather</button>
+
+
     </div>
   </div>
 </div>
@@ -112,7 +130,7 @@ function initMap() {
 <script>
 var cityLocation = null;
 $(document).ready(function(){
-  var baseUrlGoogle = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+   var baseUrlGoogle = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
   var baseUrlForecast = 'https://api.forecast.io/forecast/c6f17ac8dc25cab84eef57bd79a38592/'
 
   var name = "Your Name";
@@ -209,8 +227,8 @@ $(document).ready(function(){
 
 
 
-<div class='row'>
-<h3>Position: ({{City}})</h3>
+  <div class='row'>
+ <h3>Position: ({{City}})</h3>
 </div>
 <div class="row">
 <div class="col-md 6">
@@ -219,17 +237,17 @@ $(document).ready(function(){
 </div>
 <div class="row">
 <div class="col-md-3 col-md-offset-4">
-<h5>{{time}}</h5>
+ <h5>{{time}}</h5>
 </div>
 </div>
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 
-<p><em>{{summary}}</em></p>
+ <p><em>{{summary}}</em></p>
 
 </div>
 </div>
-</script> -->
+
 
 
 <script src=""></script>

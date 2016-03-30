@@ -1,259 +1,84 @@
 <!DOCTYPE html>
-<html lang="en"  ng-app"weather">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
   <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <link rel="stylesheet" href="css/brad.css">
-  <title>motorcycling weather</title>
-</head>
-<body>
-
-  <input id="origin" type="text" ng-model="origin">
-  <label for="origin"> Origin</label><br/>
-  <input id="destination" type="text" ng-model="destination">
-  <label for="destination"> Destination</label><br/>
-  <input id="avoidHighways" type="checkbox" ng-model='avoidHighways'>
-  <label for="avoidHighways">Avoid Highways</label><br/>
-  <input id="avoidTolls" type="checkbox" ng-model='avoidTolls'>
-  <label for="avoidTolls">Avoid Tolls</label><br/>
-  <input id="avoidFerries" type="checkbox" ng-model='avoidFerries'>
-  <label for="avoidFerries">Avoid Ferries</label><br/>
-  <div class='container'>
-      <div class='row'>
-        <div class='form-group'>
-          <label><h3>Where are you?</h3></label>
-          <span class="input input--haruki">
-  	<input class="input__field input__field--haruki" type="text" id="city-zip" />
-  	<label class="input__label input__label--haruki" for="input-1">
-  		<span class="input__label-content input__label-content--haruki"><h5>City?<h5></span>
-  	</label>
-  </span>
-  <button class="btn btn-default" id='get-weather'>Go Ride?</button>
-  </div>
-  <body>
- <div id="map"></div>
- <script>
-   function initMap() {
-     var mapDiv = document.getElementById('map');
-     var map = new google.maps.Map(mapDiv, {
-       center: {lat: 44.540, lng: -78.546},
-       zoom: 8
-     });
-   }
- </script>
- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-     async defer></script>
+   <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+  <!-- <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script> -->
+   <link rel="stylesheet" href="css/brad.css">
+   <script src="js/ng-map.min.js"></script>
+  <style>
+      html, body {width:100%; height: 100%; padding:0; margin: 0}
+      body {padding: 5px}
+      * { box-sizing: border-box; }
+    </style>
+  </head>
+  <body ng-app="ngMap">
+ <div id="origin" style="width: 68%; float:left; height: 100%">
+      <b>Origin </b>
+      <select ng-model="origin" ng-init="origin='toronto'">
+        <option value="toronto">Toronto</option><body ng-app="ngMap">
+    <d style=n>
+        <option value="ottawa">Ottawa</option>
+        <option value="montreal">Montreal</option>
+      </select>
 
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script> -->
-<!-- <script id='weather-results' type='text/x-handlebars-template'>
-  <div class="container">
-    <div class="row City">
-      <div class="col-md-2"><h4>City:</h4><h4>{{ city }}</h4></div>
+
+
+      <b>Destionation </b>
+      <select ng-model="destination" ng-init="destination='ottawa'">
+        <option value="toronto">Toronto</option>
+        <option value="ottawa">Ottawa</option>
+        <option value="montreal">Montreal</option>
+      </select>
+
+
+       <!-- <b>Mode of Travel: </b>
+      <select ng-model="travelMode" ng-init="travelMode='DRIVING'">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>  -->
+
+      <ng-map zoom="14" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()">
+        <directions
+          draggable="true"
+          panel="directions-panel"
+          travel-mode="{{travelMode}}"
+          waypoints="{{wayPoints}}"
+          origin="{{origin}}"
+          destination="{{destination}}">
+        </directions>
+      </ng-map>
+      Directions path length:
+        {{map.directionsRenderers[0].directions.routes[0].overview_path.length}}
     </div>
-    <div class="row Summary">
-      <div class="col-md-2"><h4>Summary:</h4><h4>{{ summary }}</h4></div>
+
+    <div id="directions-panel" style="width: 28%; float:left; height: 100%; overflow: auto; padding: 0px 5px">
     </div>
-    <div class="row Time">
-      <div class="col-md-2"><h4>Time:</h4><h4>{{ time }}</h4></div>
-    </div>
-    <div class="row precipitationProbability">
-      <div class="col-md-2"><h4>Chance of rain:</h4><h4>{{ precipitationProbability }}</h4></div>
-    </div>
-    <div class="row precipitationIntensity">
-      <div class="col-md-1"><h4>Precipitation Intensity:</h4><h4>{{ precipitationIntensity }}</h4></div>
-    </div>
-    <div class="row temprature">
-      <div class="col-md-2"><h4>Temp:</h4><h4>{{ temprature }}</h4></div>
-    </div>
-    <div class="row">
-    <div class="col-md-2"><h4>Humidity:</h4><h4>{{ humidity }}</h4></div>
-  </div> -->
-    <hr>
-
-    <body ng-controller='WeatherController'>
-      {{start}}
-      {{departureTime.value}}
-      <div class="container input-header">
-        <div class="row">
-          <div class="form-group">
-            <label>Enter a starting city and state or address for your ride: </label>
-            <input type="text" class='form-control' id='start' ng-model='start'>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label>Enter an ending city and state or address for your ride: </label>
-            <input type="text" class='form-control' id='end' ng-model='end'>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label>Enter the start time of your ride: </label>
-            <input type="text" class='form-control' id='departureTime' ng-model='departureTime.value'>
-          </div>
-        </div>
-    {{departureTime.value}}
-    <p></p>
-    {{tfYear}}, {{tfMonth}}, {{tfDay}}, {{tfHour}}, {{tfMinute}}, 0
-    </p>
-    <p>
-
-    </p>
-    <form>
-       <label for="exampleInput">Pick a time leave for your ride: </label>
-       <input type="time" step="900" id="exampleInput" name="input" ng-model="departureTime.value" required />
-       <div role="alert">
-         <span class="error" ng-show="myForm.input.$error.required">
-             Required!</span>
-         <span class="error" ng-show="myForm.input.$error.time">
-             Not a valid date!</span>
-       </div>
-       <tt>value = {{departure.Time.value | date: "HH:mm:ss"}}</tt><br/>
-       <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
-       <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
-       <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-       <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-    </form>
-        <button class="btn btn-default" id='get-weather'>Get Weather</button>
+     <script>
+      angular.module('ngMap').run(function($rootScope) {
+        $rootScope.logLatLng = function(e) {
+          console.log('loc', e.latLng);
+        }
+        $rootScope.wayPoints = [
+          {location: {lat:44.32384807250689, lng: -78.079833984375}, stopover: true},
+          {location: {lat:44.55916341529184, lng: -76.17919921875}, stopover: true},
+        ];
+      });
+      </script>
 
 
-    </div>
-  </div>
-</div>
-</div>
-</script>
-<script>
-var cityLocation = null;
-$(document).ready(function(){
-   var baseUrlGoogle = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
-  var baseUrlForecast = 'https://api.forecast.io/forecast/c6f17ac8dc25cab84eef57bd79a38592/'
-
-  var name = "Your Name";
-//  $('#get-weather').on('click', getWeather);
-  $('#get-weather').on('click', getCoordinates);
-
-  function buildUrlGoogle(city){
-    return baseUrlGoogle + city;
-  }
-  function buildUrlForecast(lat, lon){
-    return baseUrlForecast +lat+','+lon;
-  }
-
-//   function getWeather(){
-//     var weatherLayer = new google.maps.weather.WeatherLayer({
-//   temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT
-// });
-//     var lat = $('#city').val();
-//     var lon = $('#state').val();
-//     var options = {
-//       url: buildUrl(city, state),
-//       dataType: 'jsonp',
-//       success: successHandler,
-//       error: errorHandler
-//     };
-  //   $.ajax(options);
-  // }
-
-
-  function successHandler(data){
-    $('#output').text(JSON.stringify(data));
-    console.log(data);
-  }
-
-  function errorHandler(err){
-    console.log(err);
-  }
-
-      function getCoordinates(){
-        var city = $('#city-zip').val();
-        cityLocation = city;
-        console.log("city: ",cityLocation);
-        var ajaxOptions = {
-              url: buildUrlGoogle(city),
-            //dataType: 'jsonp',
-              success: getWeatherInfo,
-              error: errorHandler
-            };
-                  $.ajax(ajaxOptions);
-    }
-
-    function getWeatherInfo(data){
-      var lat = data.results[0].geometry.location.lat;
-      var lon = data.results[0].geometry.location.lng;
-      console.log("lat: ",lat);
-      console.log("lon: ",lon);
-      var options = {
-        url: buildUrlForecast(lat,lon),
-        dataType: 'jsonp',
-        success: successHandlerShowWeather,
-        error: errorHandler,
-      }
-      $.ajax(options);
-    }
-      function successHandlerShowWeather(data){
-        // this will put the results in the html
-
-        var source = $('#weather-results').html();
-        var template = Handlebars.compile(source);
-        var extractedData = {
-          city: cityLocation,
-          icon: data.currently.icon,
-          summary: data.currently.summary,
-          time:moment(data.currently.time*1000).format('MMMM Do YYYY, h:mm:ss a'),
-          precipitationIntensity: data.currently.precipIntensity,
-          precipitationProbability: data.currently.precipProbability,
-          temprature: data.currently.temperature,
-          humidity: data.currently.humidity,
-          visibility: data.currently.visibility,
-          cloudCover: data.currently.cloudCover,
-
-
-        };
-        console.log(extractedData)
-        var html = template(extractedData);
-        $('#output').html(html);
-
-
-      }
-});
-
-</script>
-
-
-
-
-  <div class='row'>
- <h3>Position: ({{City}})</h3>
-</div>
-<div class="row">
-<div class="col-md 6">
-<!-- <img src= "images/{{ icon }}.jpg" alt={{icon}} class="img-responsive"> -->
-</div>
-</div>
-<div class="row">
-<div class="col-md-3 col-md-offset-4">
- <h5>{{time}}</h5>
-</div>
-</div>
-<div class="row">
-<div class="col-md-8 col-md-offset-2">
-
- <p><em>{{summary}}</em></p>
-
-</div>
-</div>
-
-
-
-<script src=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
 <script src="js/config.js"></script>
-<script src="js/app.js"></script>
+<!-- <script src="js/app.js"></script> -->
 
 
 </body>

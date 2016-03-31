@@ -19,7 +19,17 @@ module.exports = function (server, passport){
     req.logout();
     res.redirect('/');
   });
-};
+
+server.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    // the callback after google has authenticated the user
+  server.get('/auth/google/callback',
+            passport.authenticate('google', {
+                    successRedirect : '/profile',
+                    failureRedirect : '/'
+            }));
+
+
 server.post('/signup', passport.authenticate('local-signup', {
       successRedirect : '/profile', // redirect to the secure profile section
       failureRedirect : '/signup', // redirect back to the signup page if there is an error
@@ -38,4 +48,5 @@ function isLoggedIn(req,res,next){
   res.redirect('/');
 
 
-}
+};
+};

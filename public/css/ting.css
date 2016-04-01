@@ -1,13 +1,23 @@
 
 .loginpic{
-  background-image: url('../image/rsz_1dt.jpg');
+  background-image: url('../image/motor.jpg');
   background-size: cover;
 
 }
 .pic{
-  background-image: url('../image/rsz_1dt.jpg');
+  background-image: url('../image/motor.jpg');
   background-size: cover;
 }
 .back{
   background-color:transparent;
+}
+.zi{
+  color:white;
+}
+.da{
+  font-size: 30;
+}
+.btn{
+  background: transparent;
+
 }

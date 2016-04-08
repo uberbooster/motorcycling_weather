@@ -36,6 +36,23 @@
         </script>
     </head>
     <body ng-controller='WeatherController'>
+      <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '841617795965672',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
       <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
           <div class="container-fluid">
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,8 +61,11 @@
                     <li>
                         <!-- <a ng-if='!isLoggedInNow' href="/">Signup/Login</a> -->
                     <a>Hi, <%= user.local.username %></a>
-                      <!-- <strong>email</strong>: <%= user.local.email %><br>
-                      <strong>password</strong>: <%= user.local.password %> -->
+                    <!-- <a>Hi, <%= user.google.name %></a> -->
+
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
                     </li>
                       <li>
                           <a href="/profile">New Trip</a>
@@ -120,10 +140,17 @@
         </div>
         <div class="col-md-3 col-sm-12">
           <p>Ads</p>
+   <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
         </div>
       </div>
 
         <!-- https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=gainesville,fl&destinations=ocala,fl|tampa,fl-->
       <script src="js/app.js"></script>
+
     </body>
 </html>

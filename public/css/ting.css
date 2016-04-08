@@ -2,7 +2,7 @@
 .loginpic{
   background-image: url('../image/motor.jpg');
   background-size: cover;
-
+  
 }
 .pic{
   background-image: url('../image/motor.jpg');
@@ -10,6 +10,9 @@
 }
 .back{
   background-color:transparent;
+}
+.google{
+  margin-right: 70px;
 }
 .zi{
   color:white;

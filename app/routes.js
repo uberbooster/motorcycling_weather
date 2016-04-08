@@ -1,6 +1,6 @@
 module.exports = function (server, passport){
   server.get('/', function(req,res){
-    res.render('index.ejs');
+    res.render('login.ejs');
   });
 
   server.get('/login' , function(req,res){
@@ -23,12 +23,24 @@ module.exports = function (server, passport){
 server.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
     // the callback after google has authenticated the user
-  server.get('/auth/google/callback',
+server.get('/auth/google/callback',
             passport.authenticate('google', {
                     successRedirect : '/profile',
                     failureRedirect : '/'
             }));
 
+server.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+                // handle the callback after facebook has authenticated the user
+server.get('/auth/facebook/callback',
+                 passport.authenticate('facebook', {
+                        successRedirect : '/profile',
+                        failureRedirect : '/'
+                    }));
+server.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/login');
+    });
 
 server.post('/signup', passport.authenticate('local-signup', {
       successRedirect : '/profile', // redirect to the secure profile section
@@ -42,11 +54,18 @@ server.post('/login', passport.authenticate('local-login', {
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+// function isLoggedIn(req,res,next){
+//   if(req.isAuthenticated())
+//   return next();
+//   res.redirect('/');
+//
+//
+// };
+};
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated())
   return next();
   res.redirect('/');
 
 
-};
 };

@@ -1,19 +1,20 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title>MotorCyclingWeatherApp</title>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="css/ting.css">
     <style>
-        body        { padding-top:80px;     }
+        body        { padding-top:7%;     }
     </style>
 </head>
-<body>
-<div class="container">
+<body class='loginpic'>
+<div class="container back">
 
-<div class="col-sm-6">
+<div class="col-sm-6 col-sm-offset-3">
 
-    <h5>Login</h5>
+    <!-- <h1 class='zi'><i class="fa fa-sign-in zi"></i> Login</h1> -->
 
     <!-- show any messages that come back with authentication -->
     <% if (message.length > 0) { %>
@@ -22,22 +23,29 @@
 
     <!-- LOGIN FORM -->
     <form action="/login" method="post">
+
+      <a href="/auth/google" class="btn btn-danger btn-lg google"><span class="fa fa-google-plus zi"></span> Sign in with Google+</a>
+      <a href="/auth/facebook" class="btn btn-primary btn-lg"><span class="fa fa-facebook zi"></span> Sign in with Facebook</a>
+
+      <br>
+      <h3 class='text-center zi'>OR</h3>
         <div class="form-group">
-            <label class="fa fa-envelope">Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
+            <label class='zi da'>User Name</label>
+            <input type="text" class="form-control" placeholder="Please enter your email" name="email">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <div class="form-group">
+            <label class='zi da'>Password</label>
+            <input type="password" class="form-control" placeholder="Password" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg zi">Login</button>
     </form>
 
     <hr>
 
-    <p>Need an account? <a href="/signup">Signup</a></p>
-    <p>Or go <a href="/">home</a>.</p>
+    <p class='zi da'>Need an account? <a href="/signup" class='da zi'><strong>Signup</strong></a></p>
+
 
 </div>
 

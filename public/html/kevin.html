@@ -1,137 +1,243 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
-        <link rel="stylesheet" href="css/kevin.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
-        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
-        <title>Motorcycling Weather</title>
-        <div class= "container-fluid" id="navBar">
-          <a href= "/" class= "navbar-brand">
+ <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-routing.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="css/kevin.css">
+    <title>Motorcycling Weather</title>
+     <div class= "navbar navbar-inverse navbar-static-top">
+      <div class= "container-fluid" id="navBar">
+        <a href= "/" class= "navbar-brand">
             For the love of Music
-          </a>
-          <button class= "navbar-toggle" data-toggle = "collapse" data-target =".navHeaderCollapse">
-            <span class= "icon-bar"></span>
-            <span class= "icon-bar"></span>
-            <span class= "icon-bar"></span>
-          </button>
-          <div class = "collapse navbar-collapse navHeaderCollapse">
-            <ul class = "nav navbar-nav navbar-right">
-              <li class="active">
-                <a href="#">
-                  Oh,
-                </a>
-              <li class = "dropdown">
-                <a href="#" class = "dropdown-toggle" data-toggle = "dropdown">
-                  <small>the places</small>
-                  <b class="caret"></b></a>
-                  <ul class= "dropdown-menu">
-                    <li><a href = "#">Here</a></li>
-                    <li><a href = "#">There</a></li>
-                    <li><a href = "#">Everywhere</a></li>
-                  </ul>
-              </li>
-              <li>
-                <a href="#">you'll</a>
-              </li>
-              <li>
-                <a href="#">go!</a>
-              </li>
-            </ul>
-          </div>
-          <hr>
-        </div>
-        <script type="text/javascript">
-        window.onload = function() {
+        </a>
+     <button class= "navbar-toggle" data-toggle = "collapse" data-target =".navHeaderCollapse">
+        <span class= "icon-bar"></span>
+        <span class= "icon-bar"></span>
+        <span class= "icon-bar"></span>
+      </button>
+      <div class = "collapse navbar-collapse navHeaderCollapse">
+        <ul class = "nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="#">
+              Oh,
+            </a>
+          <li class = "dropdown">
+            <a href="#" class = "dropdown-toggle" data-toggle = "dropdown">
+              <small>the places</small>
+                <b class="caret"></b></a>
+                <ul class= "dropdown-menu">
+                  <li><a href = "#">Here</a></li>
+                  <li><a href = "#">There</a></li>
+                  <li><a href = "#">Everywhere</a></li>
+                </ul>
+                 </li>
+          <li>
+            <a href="#">you'll</a>
+          </li>
+          <li>
+            <a href="#">go!</a>
+           </li>
+         </ul>
+      </div>
+    </div>
+  </div><hr> <!-- end nav -->
 
-            var map,
-                dir;
+<body>
+  <!-- <body ng-controller='weatherController'> -->
+    <div class='container-fluid'>
+      <div class="here">
+        <h1 id="h1">It's a beautiful day! Let's plan your adventuer:</h1>
+          <form name="guitar" ng-submit="initialize" id='leftSide'>
+          <input type="text" id="zoek" ng-model='Ride.start' class="saveForm" placeholder="Start">
+          <input type="text" id="zoek2"ng-model='Ride.end' class="saveForm" placeholder="Finish">
+            <!-- <section title=".roundedOne">
+              <div class="roundedOne">
+                <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                <label for="roundedOne" ng-model='avoidHighways'>Avoid Highways</label><br>
 
-            map = L.map('map', {
-              layers: MQ.mapLayer(),
-              center: [ 38.895345, -77.030101 ],
-              zoom: 15
-            });
+                <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                <label for="roundedOne" ng-model='avoidTolls'>Avoid Tolls</label><br>
 
-            dir = MQ.routing.directions();
+                <input type="checkbox" value="None" class="roundedOne" name="check"/>
+                <label for="roundedOne" ng-model='avoidFerries'>Avoid Ferries</label><br>
 
-            dir.route({
-                locations: [
-                    {{Ride.start}},
-                    {{Ride.end}}
-                ]
-            });
+                <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                <label for="roundedOne" ng-model=''><img src="#"></img></label><br>
 
-            map.addLayer(MQ.routing.routeLayer({
-                directions: dir,
-                fitBounds: true
-            }));
+                <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                <label for="roundedOne" ng-model=''><img src="#"></img></label><br>
+
+                <input type="checkbox" value="None" class="roundedTwo" name="check"/>
+                <label for="roundedOne" ng-model=''><img src="#"></img></label><br>-->
+                <button type="submit" id="submit">Go</button>
+              </div>
+            </section>
+          </form>
+      </div>
+        </head>
+        <div id="results"></div>
+        <div id="school"></div>
+        <div id="food"></div>
+        <div id="park"></div>
+          <div id="map"></div>
+
+        </body>
+
+  <script type="text/javascript">
+    var map;
+    var infowindow;
+
+    function initialize() {
+
+      var styles = [{
+        stylers: [{
+          hue: "#00b2ff"
+        }, {
+          saturation: -50
+        }, {
+          lightness: 7
+        }, {
+          weight: 1
         }
-    </script>
-    </head>
 
-    <body ng-controller='weatherController'>
-          <div class='container-fluid'>
-            <div class="col-md-4">
-              <h1 id="h1">where will you go?</h1>
-              <form name="guitar" ng-submit="createRide(obj)" id='leftSide'><!-- savefprm ID is just for styling-->
-                <input type="text" ng-model='Ride.start' class="saveForm" placeholder="Start">
-                <input type="text" ng-model='Ride.end' class="saveForm" placeholder="Finish">
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                    <input type="checkbox" value="None" class="roundedOne" name="check"/>
-                    <label for="roundedOne" ng-model='avoidHighways'>Avoid Highways</label>
-                  </div>
-                </section>
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                    <input type="checkbox" value="None" class="roundedOne" name="check"/>
-                    <label for="roundedOne" ng-model='avoidTolls'>Avoid Tolls</label>
-                  </div>
-                </section>
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                   <input type="checkbox" value="None" class="roundedOne" name="check"/>
-                   <label for="roundedOne" ng-model='avoidFerries'>Avoid Ferries</label>
-                  </div>
-                </section>
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                    <input type="checkbox" value="None" class="roundedTwo" name="check"/>
-                    <label for="roundedOne" ng-model=''><img src="#"></img></label>
-                  </div>
-                </section>
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                    <input type="checkbox" value="None" class="roundedTwo" name="check"/>
-                    <label for="roundedOne" ng-model=''><img src="#"></img></label>
-                  </div>
-                </section>
-                <section title=".roundedOne">
-                  <div class="roundedOne">
-                    <input type="checkbox" value="None" class="roundedTwo" name="check"/>
-                    <label for="roundedOne" ng-model=''><img src="#"></img></label>
-                  </div>
-                  <button type="submit" id="submit">Save</button>
-                </section>
-              </form>
-            </div>
+        ]
+      }, {
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [{
+          lightness: 100
+        }, {
+          visibility: "on"
+        }]
+      }, {
+        featureType: "road",
+        elementType: "labels",
+        stylers: [{
+          visibility: "on"
+        }]
+      }];
 
-            <!-- </div>
-             <div class="input">
-              <select ng-model="newTodo.">
-               <option value="" selected="selected">Difficulty Level</option>
-                <option value="Noobs">Noobs</option>
-                <option value="Beginners">Beginners</option>
-                <option value="Intermidate">Intermidate</option>
-                <option value="Expert">Expert</option>
-              </select>
-            </div> -->
+      var styledMap = new google.maps.StyledMapType(styles, {
+        name: "Styled Map"
+      });
 
-          <div class="col-md-6">
-            <div id='map'>
-          </div>
+      var pos = new google.maps.LatLng(29.6520, -82.3250);
+      var center = new google.maps.LatLng(29.6520, -82.3250);
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: center,
+        zoom: 12,
+        streetViewControl: true,
+        panControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        },
+        mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+        }
+      });
+      var image = 'https://developers.google.com/maps/documentation/javascript/examples/images/beachflag.png';
+      marker = new google.maps.Marker({
+        map: map,
+        animation: google.maps.Animation.DROP,
+        position: pos,
+        icon: image
+      });
 
 
+     var newPos = new google.maps.LatLng();
+      var request = {
+        location: pos,
+        radius: 5000,
+        types: ['school', 'restaurant', 'park']
+      };
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+
+      map.mapTypes.set('map_style', styledMap);
+      map.setMapTypeId('map_style');
+    }
+
+
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          createMarker(results[i]);
+        }
+      }
+    }
+
+    function createMarker(place) {
+      var specific_icon;
+      var school_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
+      var food_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/yellow-dot.png';
+      var park_icon = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png';
+
+      switch (true) {
+        case (place.types.indexOf('school') != -1):
+          specific_icon = school_icon;
+          break;
+        case (place.types.indexOf('restaurant') != -1):
+          specific_icon = food_icon;
+          break;
+        case (place.types.indexOf('park') != -1):
+          specific_icon = park_icon;
+          break;
+      }
+
+      var placeLoc = place.geometry.location;
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location,
+        icon: specific_icon
+      });
+
+      placesList = document.getElementById('results');
+
+      placesList.innerHTML += '<p class="' + place.types[0] + '">' + place.name + '</p>';
+
+
+
+      totalSchool = $('.school').size();
+      $('#school').text('Schools: ' + totalSchool);
+      totalFood = $('.restaurants').size();
+      $('#food').text('Restaurants: ' + totalFood);
+      totalParks = $('.park').size();
+      $('#park').text('Parks: ' + totalParks);
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+
+      });
+    }
+
+    initialize();
+
+ //autocomplete for search
+    var place;
+    var autocomplete = new google.maps.places.Autocomplete(zoek);
+
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        place = autocomplete.getPlace();
+        console.log(place);
+});
+var place;
+var autocomplete = new google.maps.places.Autocomplete(zoek2);
+
+google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    place = autocomplete.getPlace();
+    console.log(place);
+});
+  </script>
+ </body>
 </html>
